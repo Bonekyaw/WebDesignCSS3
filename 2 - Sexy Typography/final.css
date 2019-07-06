@@ -8,12 +8,12 @@
    ========================================== */
 
    .final__shadow-typo {
-     position: relative;
-     display: inline-block;
-     font-size: 4em;
+     position: relative;  /*လက်ရှိကျရာ နေရာကနေသာ အကွာအဝေး top left စသည် တွက်ချက်နိုင်ရန်*/
+     display: inline-block; /*block elements (li,h4) လိုမျိုး တစ်ကြောင်းစာနေရာမယူစေလိုပါက inline အဖြစ်သတ်မှတ်နိုင်..inline နဲ့မတူတာက block လိုမျိုး အပေါ်အောက် padding margin သတ်မှတ်ပေးနိုင် eg.navigation bar*/
+     font-size: 4em;  /*by default 1em = 16px,ဒါကြောင့် parent font-size ကို 20px သတ်မှတ်ထားပါက 1em = 20px ဖြစ်သွားလို့ Dynamic ဖြစ်သည်*/
      text-transform: uppercase;
      color: #00b3b4;
-     text-shadow: 3px 3px 0px #e7eef1, 8px 8px 0px rgba(0, 0, 0, 0.1);
+     text-shadow: 3px 3px 0px #e7eef1, 8px 8px 0px rgba(0, 0, 0, 0.1); /* offset-x | offset-y | blur-radius | color */
    }
 
 
@@ -21,10 +21,10 @@
      font-size: 4em;
      text-transform: uppercase;
      color: #f2395a;
-     -webkit-transform: skew(-5deg, -5deg) rotate(5deg);
-             transform: skew(-5deg, -5deg) rotate(5deg);
-     -webkit-transform-origin: center center;
-             transform-origin: center center;
+     -webkit-transform: skew(-5deg, -5deg) rotate(5deg); /* skew ဆိုတာ ဆွဲဆန့် ဆွဲလှည့် လိုက်တာမျိုးပါ.. offset-x | offset-y  */
+             transform: skew(-5deg, -5deg) rotate(5deg); /*rotate က လှည့်ပေးရုံပဲ... ဆွဲမဆန့်ဘူး*/
+     -webkit-transform-origin: center center; /* x-offset | y-offset | z-offset */
+             transform-origin: center center; /*left right က x-offset ဖြစ်ပြီး top bottom က y-offset ဖြစ်ပါတယ်... pin ရိုက်ပြီး လှည့်ရမယ့်နေရာကို သတ်မှတ်လိုက်တာပါပဲ*/
      text-shadow: 1px 1px #d10e31,
                   2px 2px #d10e31,
                   3px 3px #d10e31,
@@ -37,3 +37,48 @@
                   10px 10px #890920,
                   11px 11px 15px rgba(0,0,0,0.5);
    }
+
+/*======================================
+မှတ်ချက် ရေးသားရန်
+======================================*/
+
+/*
+*********position: absolute; 
+ဆိုရင် Document ရဲ့  ဟိုးထိပ်ဆုံးနေရာက top left စသည် အကွားအဝေး တွက်ချက်ရပါတယ်.
+*********position: fixed;
+ဆိုရင် Viewport ကနေသာ top left စသည် အကွာအဝေး တွက်ချက်ရပါတယ်...
+နေရာပုံသေ ထားရတဲ့ အခါ သူ့ကို သုံးကြတယ်... Scroll ဆွဲပေမယ့် နေရာမရွေ့စေချင်တဲ့
+Element တွေကို fixed ထားပေးရပါတယ်...
+*********position: -webkit-sticky;
+*********position: sticky;
+items အစုလေးတွေ အများကြီးထဲကမှ ထိပ်ဆုံး item တခုချင်းစီကို သတ်မှတ်ထားတဲ့ top: -1px;
+စသည့် အကွာအဝေးတစ်ခုဆီ ရောက်အောင် scroll ဆွဲတဲ့အခါ သူ့နေရာရောက်တာနဲ့ သူ့အစုအဝေး
+မကုန်မချင်း အဲဒီနေရာမှာပဲ မရွေ့ပဲ ကော်နဲ့စေးကပ်ထားသလိုမျိုး ရပ်တန့်နေပြီး သူ့အစု ကုန်မှသာ
+သူပါ လိုက်ပါသွားစေလိုတဲ့အခါ သုံးကြပါတယ်...
+*/
+
+/*
+
+font-size: 4rem; 
+rem က em နဲ့ မတူပါဘူး... rem က html root ရဲ့ တန်ဖိုးကိုသာ ဆက်ခံပါတယ်...
+<span>Outer 20px<span>inner 20px</span> outer 20px</span>
+html font-size က 20px သတ်မှတ်ထားရင် span ကိုလည်း 1rem = 20px
+နဲ့တွက်... 
+em ဆိုရင် parent ကနေ တန်ဖိုးဆက်ခံတဲ့အတွက်...
+<span>Outer 20px<span>inner 40px</span> outer 20px</span>
+*/
+
+/*<blur-radius>
+    Optional. This is a <length> value. The higher the value, the bigger the blur; 
+    the shadow becomes wider and lighter. If not specified, it defaults to 0.
+    */
+   
+/*transform: rotate(0.5turn);
+transform: rotate3d(1, 2.0, 3.0, 10deg);
+transform: rotateX(10deg);
+transform: rotateY(10deg);
+transform: rotateZ(10deg);*/
+
+/*z-offset
+    Is a <length> (and never a <percentage> which would make the statement invalid) 
+    describing how far from the user eye the z=0 origin is set.*/
